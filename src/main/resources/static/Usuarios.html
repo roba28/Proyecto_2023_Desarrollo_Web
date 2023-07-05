@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Gestión de Usuarios</title>
+    </head>
+    <body>
+        <h1>Gestión de Usuarios</h1>
+
+        <h2>Crear Usuario</h2>
+        <form>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            <br>
+            <label for="apellidos">Apellidos:</label>
+            <input type="text" id="apellidos" name="apellidos" required>
+            <br>
+
+            <label for="cedula">Número de Cédula:</label>
+            <input type="text" id="cedula" name="cedula" required>
+            <br>
+            <label for="idEmpresa">ID de Empresa:</label>
+            <input type="text" id="idEmpresa" name="idEmpresa" required>
+            <br>
+            <label for="correo">Correo Electrónico:</label>
+            <input type="email" id="correo" name="correo" required>
+            <br>
+            <label for="roles">Roles:</label>
+            <select id="roles" name="roles">
+                <option value="Técnico">Usuario</option>
+                <option value="administrador">Administrador</option>
+            </select>
+            <br>
+            <button type="submit">Crear</button>
+        </form>
+
+        <h2>Eliminar Usuario</h2>
+        <form>
+            <label for="usuarioEliminar">Seleccione el usuario a eliminar:</label>
+            <select id="usuarioEliminar" name="usuarioEliminar">
+                <option value="usuario1">Usuario 1</option>
+                <option value="usuario2">Usuario 2</option>
+                <option value="usuario3">Usuario 3</option>
+            </select>
+            <br>
+            <button type="submit">Eliminar</button>
+        </form>
+
+        <h2>Actualizar Información de Usuario</h2>
+        <form>
+            <label for="usuarioActualizar">Seleccione el usuario a actualizar:</label>
+            <select id="usuarioActualizar" name="usuarioActualizar">
+                <option value="usuario1">Usuario 1</option>
+                <option value="usuario2">Usuario 2</option>
+                <option value="usuario3">Usuario 3</option>
+            </select>
+            <br>
+            <label for="nombreNuevo">Nuevo Nombre:</label>
+            <input type="text" id="nombreNuevo" name="nombreNuevo">
+            <br>
+            <label for="apellidosNuevo">Nuevos Apellidos:</label>
+            <input type="text" id="apellidosNuevo" name="apellidosNuevo">
+            <br>
+            <label for="cedulaNueva">Nuevo Número de Cédula:</label>
+            <input type="text" id="cedulaNueva" name="cedulaNueva">
+            <br>
+            <label for="idEmpresaNuevo">Nuevo ID de Empresa:</label>
+            <input type="text" id="idEmpresaNuevo" name="idEmpresaNuevo">
+            <br>
+            <label for="correoNuevo">Nuevo Correo Electrónico:</label>
+            <input type="email" id="correoNuevo" name="correoNuevo">
+            <br>
+            <label for="rolesNuevo">Nuevos Roles:</label>
+            <select id="rolesNuevo" name="rolesNuevo">
+                <option value="usuario">
+                <option value="usuario">Usuario</option>
+                <option value="administrador">Administrador</option>
+            </select>
+            <br>
+            <button type="submit">Actualizar</button>
+        </form>
+
+        <!-- Aquí puedes agregar el código adicional, como una tabla para mostrar la lista de usuarios existentes -->
+
+        <h2>Lista de Usuarios</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Número de Cédula</th>
+                    <th>ID de Empresa</th>
+                    <th>Correo Electrónico</th>
+                    <th>Roles</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Usuario 1</td>
+                    <td>Apellidos 1</td>
+                    <td>123456789</td>
+                    <td>Empresa 1</td>
+                    <td>usuario1@example.com</td>
+                    <td>Usuario</td>
+                </tr>
+                <!-- Puedes agregar más filas para mostrar los usuarios existentes -->
+            </tbody>
+        </table>
+    </body>
+</html>
+
