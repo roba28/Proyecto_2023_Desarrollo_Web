@@ -1,4 +1,4 @@
-package Proyecto_2023_Desarrollo_Web;
+package com.Proyecto;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

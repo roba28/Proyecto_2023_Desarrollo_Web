@@ -1,4 +1,4 @@
-package Proyecto_2023_Desarrollo_Web;
+package com.Proyecto;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
