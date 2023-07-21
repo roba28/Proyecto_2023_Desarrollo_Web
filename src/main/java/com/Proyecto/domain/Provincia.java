@@ -12,7 +12,7 @@ public class Provincia implements Serializable{
     private static final long serialVersionUID = 1L;
     
     @Id
-//    @GeneratedValue(strategy=GenerationType.IDENTITY)
+   @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long provincia; 
     private String nombreProvincia;
     
@@ -21,8 +21,7 @@ public class Provincia implements Serializable{
     public Provincia() {
     }
 
-    public Provincia(Long provincia, String nombreProvincia) {
-        this.provincia = provincia;
+    public Provincia( String nombreProvincia) {
         this.nombreProvincia = nombreProvincia;
     }
 

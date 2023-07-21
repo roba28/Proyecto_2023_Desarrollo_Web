@@ -13,7 +13,7 @@ public class Canton implements Serializable{
     
     private Long provincia;
     @Id
-//    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long canton; 
     private String nombreCanton;
     
@@ -22,9 +22,8 @@ public class Canton implements Serializable{
     public Canton() {
     }
 
-    public Canton(Long provincia, Long canton, String nombreCanton) {
+    public Canton(Long provincia, String nombreCanton) {
         this.provincia = provincia;
-        this.canton = canton;
         this.nombreCanton = nombreCanton;
     }
 

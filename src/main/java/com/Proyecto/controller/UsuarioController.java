@@ -26,6 +26,15 @@ public class UsuarioController {
         model.addAttribute("usuarios", usuarios);
         return "/usuario/listado";
     }
+    
+        @GetMapping("/Registrarse")
+    public String Registrarse(Model model) {
+//        log.info("Consumiendo el recurso /usuario/listado");
+//        List<Usuario> usuarios = usuarioService.getUsuarios();
+//
+//        model.addAttribute("usuarios", usuarios);
+        return "Registrarse";
+    }
    
 
 }

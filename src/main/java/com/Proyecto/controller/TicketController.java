@@ -20,11 +20,19 @@ public class TicketController {
 
     @GetMapping("/listado")
     public String inicio(Model model) {
-        log.info("Consumiendo el recurso /ticket/listado");
-        List<Ticket> tickets = ticketService.getTickets();
-
-        model.addAttribute("tickets", tickets);
-        return "/ticket/listado";
+//        log.info("Consumiendo el recurso /ticket/listado");
+//        List<Ticket> tickets = ticketService.getTickets();
+//
+//        model.addAttribute("tickets", tickets);
+        return "UsuarioTickets/historicoTickets";
+    }
+    @GetMapping("/nuevo")
+    public String Nuevo(Model model) {
+//        log.info("Consumiendo el recurso /ticket/listado");
+//        List<Ticket> tickets = ticketService.getTickets();
+//
+//        model.addAttribute("tickets", tickets);
+        return "UsuarioTickets/CrearSolicitud";
     }
    
 

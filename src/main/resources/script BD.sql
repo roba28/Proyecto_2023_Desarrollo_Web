@@ -131,3 +131,7 @@ create table sistema_incidentes.adjuntos_tecnico (
   )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
+
+
+ALTER TABLE `sistema_incidentes`.`provincia` 
+CHANGE COLUMN `provincia` `provincia` INT NOT NULL AUTO_INCREMENT ;
