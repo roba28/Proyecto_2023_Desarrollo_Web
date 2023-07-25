@@ -1,40 +1,90 @@
 
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Acerca de Nosotros</title>
-</head>
-<body>
-  <header>
-    <h1>Acerca de Nosotros</h1>
-  </header>
-  
-  <nav>
-    <ul>
-      <li><a href="index.html">Inicio</a></li>
-      <li><a href="servicios.html">Servicios</a></li>
-      <li><a href="contacto.html">Contacto</a></li>
-      <li><a href="acerca.html">Acerca de Nosotros</a></li>
-    </ul>
-  </nav>
-  
-  <main>
-    <h2>¿Quiénes somos?</h2>
-    <p>Somos una empresa dedicada a...</p>
-    
-    <h2>Nuestra Misión</h2>
-    <p>Nuestra misión es...</p>
-    
-    <h2>Nuestra Visión</h2>
-    <p>Nuestra visión es...</p>
-    
-    <h2>Nuestro Equipo</h2>
-    <p>Contamos con un equipo de profesionales...</p>
-  </main>
-  
-  <footer>
-    <p>&copy; 2023 Nombre de la Empresa. Todos los derechos reservados.</p>
-  </footer>
-</body>
-</html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:fragment="head">
+        <title>TIcket</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+                <link href="css/skin.css" rel="stylesheet" type="text/css"/>
+                <html>
+                    </head >
+
+
+
+                    <body>
+                        <header th:fragment="header">
+                            <nav class="navbar navbar-inverse">
+                                <div class="container-fluid">
+                                    <div class="navbar-header">
+                                        <a class="navbar-brand" href="#">TIcket</a>
+                                    </div>
+                                    <ul class="nav navbar-nav">
+                                        <li class="active"><a href="/">Inicio</a></li>
+                                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Solicitudes <span class="caret"></span></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a th:href="@{/ticket/nuevo}">Crear Solicitud</a></li>
+
+                                                <li><a th:href="@{/ticket/listado}">Histórico</a></li>
+                                            </ul>
+                                        </li>
+                                        <!--li><a href="#">Page 2</a></li-->
+                                        <li class="active"><a th:href="@{/provincia/listado}">Provincias</a></li>
+                                        <li class="active"><a th:href="@{/canton/listado}">Cantones</a></li>
+                                        <li class="active"><a th:href="@{/distrito/listado}">Distritos</a></li>
+                                        <li class="active"><a href=AcercadeNosotros.html>Acerca de Nosotros</a></li>
+                                        <li class="active"><a href="Usuarios.html">Usuario</a></li>
+
+                                    </ul>
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
+                                        <li><a th:href="@{/}"><span class="glyphicon glyphicon-log-in"></span> Cerrar sessión</a></li>
+                                    </ul>
+                                </div>
+                            </nav>
+
+                        </header>
+
+                        <header>
+                            <h1>Acerca de Nosotros</h1>
+                        </header>
+
+
+
+                        <main>
+                            <h2>¿Quiénes somos?</h2>
+                            <p>Somos una empresa dedicada a la resolución de problemas informáticos por medio del sistema de TIcket donde nuestros clientes pueden enviar su solicitud 
+                                donde será revisada por uno de nuestros tecnicos y brindarles una solución rápida y efectiva.  </p>
+
+                            <h2>Nuestra Misión</h2>
+                            <p>En , nuestra misión es proporcionar soluciones informáticas de primera clase que impulsen el crecimiento y la eficiencia de nuestros clientes. Nos comprometemos a ofrecer productos y servicios innovadores, diseñados para satisfacer las necesidades cambiantes del mundo tecnológico, y superar las expectativas de nuestros clientes en cada interacción. </p>
+
+                            <h2>Nuestra Visión</h2>
+                            <p>En TIcket, nos enorgullecemos de ser una compañía líder en soluciones informáticas innovadoras y servicios de vanguardia. Nuestra visión es convertirnos en el socio tecnológico preferido de nuestros clientes, brindándoles las herramientas necesarias para alcanzar sus objetivos y potenciar su éxito en la era digital.</p>
+
+                            <h2>Nuestro Equipo</h2>
+                            <p>En TIcket, nuestro equipo es más que un conjunto de individuos talentosos; somos una familia unida por nuestra pasión por la tecnología y el deseo de marcar la diferencia en el mundo digital. Con un enfoque en la excelencia, la innovación y el compromiso con nuestros clientes, trabajamos en conjunto para impulsar el éxito de cada proyecto y alcanzar nuevas alturas en el ámbito de la informática.</p>
+                            <ul>
+
+                            
+                                <li><p>Experiencia y conocimiento: Nuestros colaboradores cuentan con una amplia experiencia y conocimientos en diversas áreas de la tecnología. Desde desarrolladores de software y expertos en ciberseguridad hasta especialistas en inteligencia artificial y analistas de datos, cada miembro de nuestro equipo aporta habilidades especializadas que nos permiten ofrecer soluciones integrales y de calidad.</p> </li>
+                                <li><p>Trabajo en equipo: Creemos en el poder del trabajo en equipo. Fomentamos un ambiente colaborativo donde cada miembro puede aportar sus ideas y perspectivas únicas. La sinergia entre nuestros talentosos profesionales nos permite abordar desafíos complejos y encontrar soluciones innovadoras de manera conjunta.</p> </li>
+                                <li><p>Compromiso con la excelencia: La calidad y el compromiso con la excelencia son valores fundamentales para nosotros. Cada proyecto que emprendemos es tratado con la máxima dedicación y cuidado, asegurándonos de entregar resultados de alto nivel que satisfagan las necesidades de nuestros clientes.</p> </li>
+                                <li><p>Adaptabilidad: La tecnología avanza rápidamente, y nuestro equipo está siempre dispuesto a adaptarse a los cambios y aprender nuevas habilidades. Nos mantenemos actualizados con las últimas tendencias y tecnologías emergentes para estar preparados para los desafíos del futuro.</p> </li>
+                                <li><p>Pasión por la tecnología: En [Nombre de la Empresa], compartimos una pasión común por la tecnología y su potencial para mejorar la vida de las personas y las empresas. Esta pasión nos impulsa a buscar constantemente nuevas formas de innovar y ofrecer soluciones que generen un impacto positivo en el mundo.</p> </li>
+                                <li><p>Orientación al cliente: Entendemos que nuestros clientes son la razón de nuestra existencia, y por eso mantenemos un enfoque centrado en el cliente en todas nuestras interacciones. Nos esforzamos por comprender sus necesidades y desafíos específicos, ofreciendo soluciones personalizadas que agreguen valor a sus operaciones.</p> </li>
+                            </ul>
+
+                        </main>
+                        <br>
+                        <br>
+                        <br>
+                        <footer>
+                            <p>&copy; 2023 TI   TIcket . Todos los derechos reservados.</p>
+                        </footer>
+                    </body>
+                </html>
