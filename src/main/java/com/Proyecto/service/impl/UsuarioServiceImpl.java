@@ -34,7 +34,7 @@ public class UsuarioServiceImpl implements UsuarioService{
     public void save(Usuario usuario) {
         usuarioDao.save(usuario);
     }
-
+  
     @Override
     @Transactional
     public void delete(Usuario usuario) {

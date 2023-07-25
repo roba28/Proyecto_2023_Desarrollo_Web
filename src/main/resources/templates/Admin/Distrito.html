@@ -109,7 +109,7 @@
                                                     <tr th:each="distrito : ${distritos}">
                                                         <td>[[${distrito.distrito}]]</td>
                                                         <td>[[${distrito.nombreDistrito}]]</td>
-                                                        <td>[[${distrito.canton}]]</td>
+                                                        <td>[[${distrito.canton.nombreCanton}]]</td>
                                                         <td><a th:href="@{/distrito/eliminar/}+${distrito.distrito}"
                                                                class="btn btn-danger">
                                                                 <i class="fas fa-trash"></i> Eliminar</a></td>

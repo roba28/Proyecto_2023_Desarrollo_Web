@@ -18,4 +18,16 @@ public interface TicketService {
     
     // Se elimina el ticket que tiene el id pasado por parámetro
     public void delete(Ticket ticket);
+    
+    //Lista de fechas utilizando consultas con JPQL    
+    public List<Ticket> metodoFecha(String fecha);
+    
+    //Lista de estados utilizando consultas con SQL    
+    public List<Ticket> metodoEstado(String estado);
+    
+    //Lista de incidentes utilizando consultas con SQL    
+    public List<Ticket> metodoIncidente(String incidente);
+    
+    //Lista de incidentes por usuario utilizando consultas con SQL    
+    public List<Ticket> metodoTecnico(String tecnico);
 }

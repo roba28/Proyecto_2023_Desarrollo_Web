@@ -23,36 +23,46 @@ public class Usuario implements Serializable {
     private int telefono;
     private String sexo;
     private String pais;
-    private Long provincia;
-    private Long canton;
-    private Long distrito;
     private String otrasSenas;
-    private Long rol;
     private String fechaRegistro;
-    private Long estadoUsuario;
     private boolean terminosCondiciones;
+    
+    @ManyToOne
+    @JoinColumn(name = "provincia")
+    private Provincia provincia;
+    
+    @ManyToOne
+    @JoinColumn(name = "canton")
+    private Canton canton;
+    
+    @ManyToOne
+    @JoinColumn(name = "distrito")
+    private Distrito distrito;
+    
+    @ManyToOne
+    @JoinColumn(name = "rol")
+    private Rol rol;
+    
+    @ManyToOne
+    @JoinColumn(name = "estadoUsuario")
+    private EstadoUsuario estadoUsuario;
 
     public Usuario() {
     }
 
-    public Usuario(String usuario, String contrasena, String nombreCompleto, int cedula, String email, int telefono, String sexo, String pais, Long provincia, Long canton, Long distrito, String otrasSenas, Long rol, String fechaRegistro, Long estadoUsuario, boolean terminosCondiciones) {
-        this.usuario = usuario;
-        this.contrasena = contrasena;
-        this.nombreCompleto = nombreCompleto;
-        this.cedula = cedula;
-        this.email = email;
-        this.telefono = telefono;
-        this.sexo = sexo;
-        this.pais = pais;
-        this.provincia = provincia;
-        this.canton = canton;
-        this.distrito = distrito;
-        this.otrasSenas = otrasSenas;
-        this.rol = rol;
-        this.fechaRegistro = fechaRegistro;
-        this.estadoUsuario = estadoUsuario;
-        this.terminosCondiciones = terminosCondiciones;
-    }
+//    public Usuario(String usuario, String contrasena, String nombreCompleto, int cedula, String email, int telefono, String sexo, String pais, String otrasSenas, String fechaRegistro, boolean terminosCondiciones) {
+//        this.usuario = usuario;
+//        this.contrasena = contrasena;
+//        this.nombreCompleto = nombreCompleto;
+//        this.cedula = cedula;
+//        this.email = email;
+//        this.telefono = telefono;
+//        this.sexo = sexo;
+//        this.pais = pais;
+//        this.otrasSenas = otrasSenas;
+//        this.fechaRegistro = fechaRegistro;
+//        this.terminosCondiciones = terminosCondiciones;
+//    }
 
     
     

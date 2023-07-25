@@ -11,22 +11,24 @@ public class Distrito implements Serializable{
     
      private static final long serialVersionUID = 1L;
     
-    private Long provincia;
-     private Long canton; 
-   @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Id
     private Long distrito; 
     private String nombreDistrito;
     
+   @ManyToOne
+    @JoinColumn(name = "provincia")
+    private Provincia provincia;
+   
+    @ManyToOne
+    @JoinColumn(name = "canton")
+    private Canton canton;
    
 
     public Distrito() {
     }
 
-    public Distrito(Long provincia, Long canton, String nombreDistrito) {
-        this.provincia = provincia;
-        this.canton = canton;
-        this.distrito = distrito;
+    public Distrito(String nombreDistrito) {
         this.nombreDistrito = nombreDistrito;
     }
 

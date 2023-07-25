@@ -2,123 +2,52 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 
-    <head th:fragment="head">
-        <title>TIcket</title>
-        <meta charset="UTF-8" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    </head >
-    <header th:fragment="header">
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">TIcket</a>
-                </div>
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.html">Inicio</a></li>
-                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Solicitudes <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="CrearSolicitud.html">Crear Solicitud</a></li>
-
-                            <li><a href="#">Histórico</a></li>
-                        </ul>
-                    </li>
-                    <!--li><a href="#">Page 2</a></li-->
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Cerrar sessión</a></li>
-                </ul>
-            </div>
-        </nav>
+    <head th:replace="layout/main :: head">
+    </head>
+    <header th:replace="layout/main :: header">
 
     </header>
     <body>
 
         <div class="container">
             <h1>Tickets asignados</h1>
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <form>
-                        <!-- 2 column grid layout with text inputs for the first and last names -->
-
-                        <div class="col">
-                            <div class="form-outline">
-                                <label class="form-label " for="form6Example1">Id de empleado</label>
-                                <input type="text" id="form6Example1" class="form-control" disabled="true"/>
-                            </div>
-                        </div>
-                        <br></br>
-                        <br></br>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-9">
-                                    <div class="card">
-                                        <table class="table table-striped table-hover">
-                                            <thead class="table-dark">
-                                                <tr><th>#</th>
-                                                    <th>Ticket</th>
-                                                    <th>Fecha registro</th>
-                                                    <th>Tipo incidente</th>
-                                                    <th>Estado</th>
-                                                    <th>Usuario registra</th>
-                                                    <th>Técnico registro</th>
-                                                    <th></th></tr>
-                                            </thead>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>                                            
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>                                            
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>                                            
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>                                            
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>                                            
-                                        </table>
-                                    </div>
+            <section>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <!--                        <form method="POST" th:action="@{/ticket/query4}>
+                                                      <div class="col">
+                                                    <div class="form-outline">
+                                                        <label class="form-label " for="form6Example1">Id de empleado</label>
+                                                        <input type="text" id="form6Example1" class="form-control" disabled="true" value="ldiego"/>
+                                                    </div>
+                                                </form>-->
+                        <form method="POST" th:action="@{/ticket/query4}"                               
+                              class="was-validated">
+                            <div class="card">                            
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label for="idEmpleado">Id de empleado</label>
+                                        <input type="text" class="form-control" 
+                                               th:value="ldiego"                                              
+                                               th:name="tecnico" 
+                                               disabled='true'
+                                               />
+                                         <!--el value se debe obtener del usuario en la sesión, este lo añadí para asegurarme que el form y filtro funciona correctamente-->
+                                    </div>                                    
                                 </div>
+<!--                                <div class="card-footer text-center">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-check"></i> Filtrar
+                                    </button>
+                                </div>-->
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
+
                 </div>
-            </div>
+        </div>
+        </section>
+        <section th:replace="~{UsuarioTickets/fragmentos :: listado2}"/>
         </div>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

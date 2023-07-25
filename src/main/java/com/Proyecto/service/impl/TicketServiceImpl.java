@@ -40,4 +40,30 @@ public class TicketServiceImpl implements TicketService{
     public void delete(Ticket ticket) {
         ticketDao.delete(ticket);
     }
+
+    @Override
+    @Transactional(readOnly=true) 
+    public List<Ticket> metodoFecha(String fecha) {
+        return ticketDao.metodoFecha(fecha);
+    }
+    
+    @Override
+    @Transactional(readOnly=true) 
+    public List<Ticket> metodoEstado(String estado) {
+        return ticketDao.metodoEstado(estado);
+    }
+    
+    @Override
+    @Transactional(readOnly=true) 
+    public List<Ticket> metodoIncidente(String incidente) {
+        return ticketDao.metodoIncidente(incidente);
+    }
+    
+    @Override
+    @Transactional(readOnly=true) 
+    public List<Ticket> metodoTecnico(String tecnico) {
+        return ticketDao.metodoTecnico(tecnico);
+    }
+    
+    
 }

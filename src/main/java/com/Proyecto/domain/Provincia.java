@@ -2,6 +2,7 @@ package com.Proyecto.domain;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import lombok.Data;
 
 @Data
@@ -16,6 +17,9 @@ public class Provincia implements Serializable{
     private Long provincia; 
     private String nombreProvincia;
     
+    @OneToMany
+    @JoinColumn(name="provincia")
+    private List<Usuario> Usuarios;
    
 
     public Provincia() {

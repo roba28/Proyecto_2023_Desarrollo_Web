@@ -11,19 +11,21 @@ public class Canton implements Serializable{
     
     private static final long serialVersionUID = 1L;
     
-    private Long provincia;
+//    private Long provincia;
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long canton; 
     private String nombreCanton;
     
+    @ManyToOne
+    @JoinColumn(name = "provincia")
+    private Provincia provincia;
    
 
     public Canton() {
     }
 
-    public Canton(Long provincia, String nombreCanton) {
-        this.provincia = provincia;
+    public Canton(String nombreCanton) {
         this.nombreCanton = nombreCanton;
     }
 

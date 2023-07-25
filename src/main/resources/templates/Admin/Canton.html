@@ -103,7 +103,7 @@
                                                     <tr th:each="canton : ${cantones}">
                                                         <td>[[${canton.canton}]]</td>
                                                         <td>[[${canton.nombreCanton}]]</td>
-                                                        <td>[[${canton.provincia}]]</td>
+                                                        <td>[[${canton.provincia.nombreProvincia}]]</td>
                                                         <td><a th:href="@{/canton/eliminar/}+${canton.canton}"
                                                                class="btn btn-danger">
                                                                 <i class="fas fa-trash"></i> Eliminar</a></td>

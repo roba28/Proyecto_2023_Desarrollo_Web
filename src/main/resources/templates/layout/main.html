@@ -19,9 +19,14 @@
       <li class="active"><a href="/">Inicio</a></li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Solicitudes <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a th:href="@{/ticket/nuevo}">Crear Solicitud</a></li>
-         
+          <li><a th:href="@{/ticket/nuevo}">Crear Solicitud</a></li>         
           <li><a th:href="@{/ticket/listado}">Histórico</a></li>
+          <li><a th:href="@{/ticket/listado/asignados}">Tickets Asignados</a></li>
+        </ul>
+      </li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Usuarios <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li><a th:href="@{/usuario/listado}">Listado técnicos</a></li>
         </ul>
       </li>
       <!--li><a href="#">Page 2</a></li-->
