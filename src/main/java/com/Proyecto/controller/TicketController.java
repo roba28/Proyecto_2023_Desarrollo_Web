@@ -48,13 +48,19 @@ public class TicketController {
         model.addAttribute("tickets", tickets);
         return "UsuarioTickets/historicoTickets";
     }
-
+    
+    
     @GetMapping("/nuevo")
-    public String Nuevo(Model model) {
-//        log.info("Consumiendo el recurso /ticket/listado");
-//        List<Ticket> tickets = ticketService.getTickets();
-//
-//        model.addAttribute("tickets", tickets);
+    public String solicitudNueva(Ticket ticket, Model model) {
+        List<Incidencia> incidencias = incidenciaService.getIncidencias();
+        List<EstadoTicket> estadoTickets = estadoTicketService.getEstadoTickets();
+        List<Prioridad> prioridades = prioridadService.getPrioridades();
+        List<Usuario> usuarios = usuarioService.getUsuarios();
+        model.addAttribute("incidencias", incidencias);
+        model.addAttribute("estadoTickets", estadoTickets);
+        model.addAttribute("prioridades", prioridades);
+        model.addAttribute("tecnicos", usuarios);
+//        model.addAttribute("fechaRegistraTecnico", fecha);
         return "UsuarioTickets/CrearSolicitud";
     }
     
@@ -76,6 +82,7 @@ public class TicketController {
         model.addAttribute("estadoTickets", estadoTickets);
         model.addAttribute("incidencias", incidencias);
         model.addAttribute("prioridades", prioridades);
+        model.addAttribute("tecnicos", usuarios);
         return "UsuarioTickets/atencionTicket"; //modificar este return
     }
     

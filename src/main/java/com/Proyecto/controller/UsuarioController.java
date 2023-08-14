@@ -28,19 +28,19 @@ public class UsuarioController {
 
     @Autowired
     UsuarioService usuarioService;
-    
+
     @Autowired
     ProvinciaService provinciaService;
-    
+
     @Autowired
     CantonService cantonService;
-    
+
     @Autowired
     DistritoService distritoService;
-    
+
     @Autowired
     RolService rolService;
-    
+
     @Autowired
     EstadoUsuarioService estadoUsuarioService;
 
@@ -52,29 +52,34 @@ public class UsuarioController {
         model.addAttribute("usuarios", usuarios);
         return "Admin/listadoTecnicos";
     }
-    
-        @GetMapping("/Registrarse")
-    public String Registrarse(Model model) {
-//        log.info("Consumiendo el recurso /usuario/listado");
-//        List<Usuario> usuarios = usuarioService.getUsuarios();
-//
-//        model.addAttribute("usuarios", usuarios);
+
+    @GetMapping("/Registrarse")
+    public String Registrarse(Usuario usuario, Model model) {
+        List<Provincia> provincias = provinciaService.getProvincias();
+        List<Canton> cantones = cantonService.getCantones();
+        List<Distrito> distritos = distritoService.getDistritos();
+        List<Rol> roles = rolService.getRoles();
+        List<EstadoUsuario> estadoUsuarios = estadoUsuarioService.getEstadoUsuarios();
+        model.addAttribute("provincias", provincias);
+        model.addAttribute("cantones", cantones);
+        model.addAttribute("distritos", distritos);
+        model.addAttribute("roles", roles);
+        model.addAttribute("estadoUsuarios", estadoUsuarios);
         return "Registrarse";
     }
-    
-    
+
     @PostMapping("/guardar")
-    public String productoGuardar(Usuario usuario) {
+    public String usuarioGuardar(Usuario usuario) {
         usuarioService.save(usuario);
         return "redirect:/usuario/listado";
     }
-    
+
     @GetMapping("/eliminar/{idUsuario}")
     public String usuarioEliminar(Usuario usuario) {
         usuarioService.delete(usuario);
         return "redirect:/usuario/listado";
     }
-    
+
     @GetMapping("/modificar/{idUsuario}")
     public String usuarioModificar(Usuario usuario, Model model) {
         usuario = usuarioService.getUsuario(usuario);
@@ -91,6 +96,5 @@ public class UsuarioController {
         model.addAttribute("estadoUsuarios", estadoUsuarios);
         return "usuario/modifica";
     }
-   
 
 }

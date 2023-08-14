@@ -133,5 +133,39 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
 
-ALTER TABLE `sistema_incidentes`.`provincia` 
-CHANGE COLUMN `provincia` `provincia` INT NOT NULL AUTO_INCREMENT ;
+-- ALTER TABLE `sistema_incidentes`.`provincia` 
+-- CHANGE COLUMN `provincia` `provincia` INT NOT NULL AUTO_INCREMENT ;
+
+
+DROP TRIGGER IF EXISTS `sistema_incidentes`.`inserta_ticket`;
+DELIMITER $$
+USE `sistema_incidentes`$$
+CREATE TRIGGER `sistema_incidentes`.`inserta_ticket` BEFORE INSERT ON `ticket` FOR EACH ROW
+BEGIN
+	SET NEW.fecha_registro_usuario = NOW();
+    SET NEW.fecha_registra_tecnico = NOW();
+    SET NEW.estado = 1;
+    SET NEW.prioridad = 1;
+    SET NEW.id_tecnico = 2;
+END$$
+DELIMITER ;
+
+DROP TRIGGER IF EXISTS `sistema_incidentes`.`inserta_usuario`;
+DELIMITER $$
+USE `sistema_incidentes`$$
+CREATE TRIGGER `sistema_incidentes`.`inserta_usuario` BEFORE INSERT ON `usuario` FOR EACH ROW
+BEGIN
+	SET NEW.rol = 1;
+    SET NEW.estado_usuario = 1;
+    SET NEW.fecha_registro = NOW();
+END$$
+DELIMITER ;
+
+DELIMITER $$
+USE `sistema_incidentes`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `sistema_incidentes`.`actualiza_tecnico` BEFORE UPDATE ON `ticket` FOR EACH ROW
+BEGIN
+	IF (NEW.id_tecnico != OLD.id_tecnico) then SET NEW.fecha_registra_tecnico = NOW();
+    END IF;
+END$$
+DELIMITER ;

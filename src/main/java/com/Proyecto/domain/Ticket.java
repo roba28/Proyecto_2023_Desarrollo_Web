@@ -2,6 +2,7 @@ package com.Proyecto.domain;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import lombok.Data;
 
 @Data
@@ -15,15 +16,16 @@ public class Ticket implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_ticket")
     private Long idTicket;
-//    @Column(name = "id_usuario")
-//    private Long idUsuario;
     private String titulo;
     private String descripcion;
     private String comentariosUsuario;
-    private String fechaRegistroUsuario;
-    private String fechaRegistraTecnico;
-//    private Long idTecnico;
     private String comentarioTecnico;
+    
+    @Column(name="fecha_registro_usuario", insertable = false)
+    private String fechaRegistroUsuario;
+    
+    @Column(name="fecha_registra_tecnico", insertable = false)
+    private LocalDateTime fechaRegistraTecnico;
     
     @ManyToOne
     @JoinColumn(name = "tipoIncidencia")

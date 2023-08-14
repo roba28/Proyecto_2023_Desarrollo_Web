@@ -2,6 +2,7 @@ package com.Proyecto.domain;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import lombok.Data;
 
 @Data
@@ -15,7 +16,8 @@ public class Usuario implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_usuario")
     private Long idUsuario;
-    private String usuario;
+     @Column(name = "usuario")
+    private String username; //originalmente se llamaba usuario
     private String contrasena;
     private String nombreCompleto;
     private int cedula;
@@ -24,7 +26,8 @@ public class Usuario implements Serializable {
     private String sexo;
     private String pais;
     private String otrasSenas;
-    private String fechaRegistro;
+    @Column(name="fecha_registro", insertable = false)
+    private LocalDateTime fechaRegistro;
     private boolean terminosCondiciones;
     
     @ManyToOne
@@ -47,8 +50,8 @@ public class Usuario implements Serializable {
     @JoinColumn(name = "estadoUsuario")
     private EstadoUsuario estadoUsuario;
 
-    public Usuario() {
-    }
+//    public Usuario() {
+//    }
 
 //    public Usuario(String usuario, String contrasena, String nombreCompleto, int cedula, String email, int telefono, String sexo, String pais, String otrasSenas, String fechaRegistro, boolean terminosCondiciones) {
 //        this.usuario = usuario;

@@ -78,40 +78,46 @@
                     <div class="panel-body">
                         <!-- 2 column grid layout with text inputs for the first and last names -->
                         <section  id="Tickets">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-11 mb-2">
-                                        <div class="card">
-                                            <div th:if="${tickets != null and !tickets.empty}">
-                                                <table class="table table-striped table-hover">
-                                                    <thead class="table-dark">
-                                                        <tr><th>Ticket</th>
-                                                            <!--<th>Ticket</th>-->
-                                                            <th>Fecha registro</th>
-                                                            <th>Tipo incidente</th>
-                                                            <th>Estado</th>
-                                                            <th>Usuario registra</th>
-                                                            <th>Técnico registro</th>
-                                                            <th></th></tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr th:each="ticket : ${tickets}">
-                                                            <td>[[${ticket.idTicket}]]</td>
-                                                            <td>[[${ticket.fechaRegistroUsuario}]]</td>
-                                                            <td>[[${ticket.incidencia.descripcion}]]</td>
-                                                            <td>[[${ticket.estado.descripcion}]]</td>
-                                                            <td>[[${ticket.usuario.usuario}]]</td>
-                                                            <td>[[${ticket.tecnico.usuario}]]</td>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="text-center p-2" th:if="${tickets == null or tickets.empty}">
-                                                <span>La lista se encuentra vacía</span>
-                                            </div>
+
+                            <div class="row">
+                                <div class="col-md-11 mb-2">
+                                    <div class="card">
+                                        <div th:if="${tickets != null and !tickets.empty}">
+                                            <table class="table table-striped table-hover">
+                                                <thead class="table-dark">
+                                                    <tr><th>Ticket</th>
+                                                        <th>Fecha registro</th>
+                                                        <th>Tipo incidente</th>
+                                                        <th>Estado</th>
+                                                        <th>Usuario registra</th>
+                                                        <th>Técnico registro</th>
+                                                        <th></th></tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr th:each="ticket : ${tickets}">
+                                                        <!--                                                            <td>[[${ticket.idTicket}]]</td>
+                                                                                                                    <td>[[${ticket.fechaRegistroUsuario}]]</td>
+                                                                                                                    <td>[[${ticket.incidencia.descripcion}]]</td>
+                                                                                                                    <td>[[${ticket.estado.descripcion}]]</td>
+                                                                                                                    <td>[[${ticket.usuario.username}]]</td>
+                                                                                                                    <td>[[${ticket.tecnico.username}]]</td>                                                            -->
+                                                        <td th:text="${ticket.idTicket}"></td>
+                                                        <td th:text="${ticket.fechaRegistroUsuario}"></td>
+                                                        <td th:text="${ticket.incidencia.descripcion}"></td>
+                                                        <td th:text="${ticket.estado.descripcion}"></td>
+                                                        <td th:text="${ticket.usuario.username}"></td>
+                                                        <td th:text="${ticket.tecnico.username}"></td>  
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="text-center p-2" th:if="${tickets == null or tickets.empty}">
+                                            <span>La lista se encuentra vacía</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                         </section>
                     </div>
                 </div>
@@ -141,13 +147,13 @@
                                                             <th></th></tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr th:each="ticket : ${tickets}" th:if="${ticket.tecnico.usuario} == 'ldiego'">
+                                                        <tr th:each="ticket : ${tickets}" th:if="${ticket.tecnico.username} == 'ldiego'">
                                                             <td>[[${ticket.idTicket}]]</td>
                                                             <td>[[${ticket.fechaRegistroUsuario}]]</td>
                                                             <td>[[${ticket.incidencia.descripcion}]]</td>
                                                             <td>[[${ticket.estado.descripcion}]]</td>
-                                                            <td>[[${ticket.usuario.usuario}]]</td>
-                                                            <td>[[${ticket.tecnico.usuario}]]</td>
+                                                            <td>[[${ticket.usuario.username}]]</td>
+                                                            <td>[[${ticket.tecnico.username}]]</td>
                                                             <td> <a th:href="@{/ticket/atencion/}+${ticket.idTicket}"
                                                                     class="btn btn-success">
                                                                     <i class="fas fa-pencil"></i>Atender</a></td></tr>
@@ -178,8 +184,9 @@
                           enctype="multipart/form-data">
                         <input type="hidden" name="idTicket" th:field="*{idTicket}"/>
                         <input type="hidden" name="usuario.idUsuario" th:field="*{usuario.idUsuario}"/>
-                        <!--<input type="hidden" name="fecha_registra_tecnico" th:field="*{fecha_registra_tecnico}"/>-->
-                        <!--<input type="hidden" name="tecnico.idTecnico" th:field="*{tecnico.idTecnico}"/>-->
+                        <input type="hidden" name="fechaRegistraTecnico" th:field="*{fechaRegistraTecnico}"/>
+                        <input type="hidden" name="tecnico.idUsuario" th:field="*{tecnico.idUsuario}"/>
+                        <input type="hidden" name="comentarioTecnico" th:field="*{comentarioTecnico}"/>
                         <section th:replace="~{UsuarioTickets/fragmentos :: botonesAtencion}"/>
                         <div id=details>
                             <div class="container">
@@ -198,9 +205,9 @@
                                                            disabled="true">
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="usuario.usuario">Usuario incidente</label>
+                                                    <label for="usuario.username">Usuario incidente</label>
                                                     <input type="text" class="form-control" 
-                                                           th:field="*{usuario.usuario}"
+                                                           th:field="*{usuario.username}"
                                                            readonly
                                                            disabled="true">
                                                 </div>

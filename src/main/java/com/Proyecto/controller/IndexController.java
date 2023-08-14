@@ -14,5 +14,5 @@ public class IndexController {
     public String page(Model model) {
        // model.addAttribute("attribute", "value");
         return "index";
-    }
+    }   
 }

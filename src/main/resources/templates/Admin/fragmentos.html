@@ -24,16 +24,17 @@
                                                             <th></th></tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr th:each="usuario : ${usuarios}" th:if="${usuario.rol} == 2">
+                                                        <tr th:each="usuario : ${usuarios}" 
+                                                            <!--th:if="${usuario.rol} == 2"-->
                                                             <td>[[${usuario.idUsuario}]]</td>
                                                             <td>[[${usuario.cedula}]]</td>
                                                             <td>[[${usuario.nombreCompleto}]]</td>
                                                             <td><a th:href="@{/usuario/eliminar/}+${usuario.usuario}"
                                                                    class="btn btn-danger">
-                                                                    <i class="fas fa-trash"></i> Eliminar</a></td>
+                                                                    <i class="fas fa-trash"></i>Eliminar</a></td>
                                                             <td> <a th:href="@{/usuario/modificar/}+${usuario.usuario}"
                                                                     class="btn btn-success">
-                                                                    <i class="fas fa-pencil"></i> Actualizar</a></td></tr>
+                                                                    <i class="fas fa-pencil"></i>Actualizar</a></td></tr>
                                                     </tbody>
                                                 </table>
                                             </div>

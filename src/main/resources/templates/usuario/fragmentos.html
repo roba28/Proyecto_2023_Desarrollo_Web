@@ -59,7 +59,7 @@
                           class="was-validated"
                           enctype="multipart/form-data">
                         <input type="hidden" name="idUsuario" th:field="*{idUsuario}"/>
-                        <input type="hidden" name="usuario" th:field="*{usuario}"/>
+                        <input type="hidden" name="username" th:field="*{username}"/>
                         <input type="hidden" name="contrasena" th:field="*{contrasena}"/>
                         <input type="hidden" name="fechaRegistro" th:field="*{fechaRegistro}"/>
                         <section th:replace="~{usuario/fragmentos :: botonesEditar}"/>
@@ -72,7 +72,7 @@
                                                 <h4>Actualizar datos de usuario</h4>
                                             </div>
                                             <div class="card-body">
-                                                <div class="mb-3">
+<!--                                                <div class="mb-3">
                                                     <label for="idUsuario">Id usuario</label>
                                                     <input type="text" class="form-control" 
                                                            th:field="*{idUsuario}"
@@ -80,12 +80,12 @@
                                                            disabled="true">
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="usuario">Usuario</label>
+                                                    <label for="username">username</label>
                                                     <input type="text" class="form-control" 
-                                                           th:field="*{usuario}"
+                                                           th:field="*{username}"
                                                            readonly
                                                            disabled="true">
-                                                </div>
+                                                </div>-->
                                                 <div class="mb-3">
                                                     <label for="nombre">Nombre Completo</label>
                                                     <input type="text" class="form-control" 

@@ -10,93 +10,136 @@
             <h1>Creación Nuevo Usuario</h1>
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <form>
+                    <form th:action="@{/usuario/guardar}" th:object="${usuario}"
+                          method="POST" class="was-validated"
+                          enctype="multipart/form-data">
                         <!-- 2 column grid layout with text inputs for the first and last names -->
+                        <input type="hidden" name="fecha_registro" />
+                        <input type="hidden" name="rol" />
+                        <input type="hidden" name="estado_usuario" />
 
                         <div class="col">
                             <div class="form-outline">
-                                <label class="form-label " for="form6Example1">Nombre Completo</label>
-                                <input type="text" id="Usuario" class="form-control"/>
+                                <label class="form-label " for="nombre">Nombre Completo</label>
+                                <input type="text" id="Usuario" class="form-control" name="nombreCompleto"/>
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-outline">
-                                <label class="form-label" for="form6Example2">Cédula</label>
-                                <input type="text" id="Cedula" class="form-control"/>
+                                <label class="form-label " for="username">Nombre usuario</label>
+                                <input type="text" id="Usuario" class="form-control" name="username"/>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-outline">
+                                <label class="form-label " for="contrasena">Contraseña</label>
+                                <input type="text" id="Usuario" class="form-control" name="contrasena"/>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-outline">
+                                <label class="form-label" for="cedula">Cédula</label>
+                                <input type="number" id="Cedula" class="form-control" name="cedula"/>
                             </div>
                         </div>
 
 
                         <!-- Text input -->
                         <div class="form-outline mb-4">
-                            <label class="form-label" for="form6Example3">Correo Electrónico</label>
-                            <input type="text" id="Email" class="form-control"/>
+                            <label class="form-label" for="email">Correo Electrónico</label>
+                            <input type="email" id="Email" class="form-control" name="email"/>
 
                         </div>
 
                         <!-- Text input -->
                         <div class="form-outline mb-4">
-                            <label class="form-label" for="form6Example4">Teléfono</label>
-                            <input type="text" id="telefono" class="form-control" />
+                            <label class="form-label" for="telefono">Teléfono</label>
+                            <input type="tel" id="telefono" class="form-control" name="telefono"/>
 
                         </div>
 
                         <!-- Email input -->
                         <div class="form-outline mb-4">
-                            <label class="form-label" for="form6Example5">Sexo</label>
-                            <select name="select" class="form-control">
-                                <option value="value1">Masculino</option>
-                                <option value="value2" selected>Femenino</option>
+                            <label class="form-label" for="sexo">Sexo</label>
+                            <select name="sexo" class="form-control">
+                                <option value="Masculino">Masculino</option>
+                                <option value="Femenino" selected>Femenino</option>
                             </select>
                         </div>
                         <div class="form-outline mb-4">
-                            <label class="form-label" for="form6Example5">Páis</label>
-                            <select name="select" class="form-control">
-                                <option value="value1">Costa Rica</option>
-                                <option value="value2" selected>Panamá</option>
+                            <label class="form-label" for="form6Example5">País</label>
+                            <select name="pais" class="form-control">
+                                <option value="Costa Rica">Costa Rica</option>
+                                <option value="Panamá" selected>Panamá</option>
                             </select>
                         </div>
-                        <div class="form-outline mb-4">
-                            <label class="form-label" for="form6Example5">Provincia</label>
-                            <select name="select" class="form-control">
-                                <option value="value1">Cartago</option>
-                                <option value="value2" selected>Puntarenas</option>
+                        <div class="mb-3">
+                            <label for="provincia">Provincia</label>
+                            <select th:field="*{provincia.provincia}"
+                                    class="form-select" 
+                                    aria-label="Default select example">
+                                <option th:each="c : ${provincias}" th:value="${c.provincia}" th:text="${c.nombreProvincia}">
+                                </option>
                             </select>
                         </div>
-                        <div class="form-outline mb-4">
-                            <label class="form-label" for="form6Example5">Cantón</label>
-                            <select name="select" class="form-control">
-                                <option value="value1">Central</option>
-                                <option value="value2" selected>El Guarco</option>
+                        <div class="mb-3">
+                            <label for="canton">Canton</label>
+                            <select th:field="*{canton.canton}"
+                                    class="form-select" 
+                                    aria-label="Default select example">
+                                <option th:each="c : ${cantones}" th:value="${c.canton}" th:text="${c.nombreCanton}">
+                                    <!--<option th:each="c : ${cantones}" th:value="${c.canton}" th:text="${c.nombreCanton}" th:if="${c.provincia} == 6">-->
+                                    <!--<option th:each="c : ${cantones}" th:value="${c.canton}" th:text="${c.nombreCanton}">-->
+                                </option>
                             </select>
                         </div>
-                        <div class="form-outline mb-4">
-                            <label class="form-label" for="form6Example5">Distrito</label>
-                            <select name="select" class="form-control">
-                                <option value="value1">Tobósi</option>
-                                <option value="value2" selected>Central</option>
+                        <div class="mb-3">
+                            <label for="distrito">Distrito</label>
+                            <select th:field="*{distrito.distrito}"
+                                    class="form-select" 
+                                    aria-label="Default select example">
+                                <option th:each="c : ${distritos}" th:value="${c.distrito}" th:text="${c.nombreDistrito}">
+                                </option>
                             </select>
                         </div>
                         <!-- Message input -->
                         <div class="form-outline mb-4">
-                            <label class="form-label" for="form6Example7">Otras señas</label>
-                            <textarea class="form-control" id="form6Example7" rows="4"></textarea>
+                            <label class="form-label" for="otrasSenas">Otras señas</label>
+                            <textarea class="form-control" id="form6Example7" rows="4" name="otrasSenas"></textarea>
                         </div>
+<!--                        <div class="mb-3">
+                            <label for="rol">Rol</label>
+                            <select th:field="*{rol.rol}"
+                                    class="form-select" 
+                                    aria-label="Default select example">
+                                <option th:each="c : ${roles}" th:value="${c.rol}" th:text="${c.descripcion}">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="estadoUsuario">Estado usuario</label>
+                            <select th:field="*{estadoUsuario.estadoUsuario}"
+                                    class="form-select" 
+                                    aria-label="Default select example">
+                                <option th:each="c : ${estadoUsuarios}" th:value="${c.estadoUsuario}" th:text="${c.descripcion}">
+                                </option>
+                            </select>
+                        </div> -->
 
                         <!-- Number input -->
                         <div class="form-outline mb-4">
-                            
-                            <input type="checkbox" id="form6Example6" />
-                            <label class="form-label" for="form6Example6">Aceptar términos y condiciones </label>
+
+                            <input type="checkbox" id="form6Example6" name="terminosCondiciones"/>
+                            <label class="form-label" for="terminosCondiciones">Aceptar términos y condiciones </label>
 
                         </div>
 
-                      
+
                         <div class="form-outline mb-4">
                             <!-- Submit button -->
                             <button type="submit" class="btn btn-primary btn-block mb-2">Guardar</button>
                         </div>
-                          <div class="form-outline mb-4">
+                        <div class="form-outline mb-4">
                             <!-- Submit button -->
                             <a th:href="@{/}" class="btn btn-secondary btn-block mb-2">Regresar</a>
                         </div>
