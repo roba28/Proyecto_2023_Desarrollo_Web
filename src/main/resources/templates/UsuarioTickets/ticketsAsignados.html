@@ -10,7 +10,7 @@
     <body>
 
         <div class="container">
-            <h1>Tickets asignados</h1>
+            <h1>[[#{solicitud.asignados}]]</h1>
             <section>
                 <div class="panel panel-default">
                     <div class="panel-body">
@@ -26,9 +26,9 @@
                             <div class="card">                            
                                 <div class="card-body">
                                     <div class="mb-3">
-                                        <label for="idEmpleado">Id de empleado</label>
+                                        <label for="idEmpleado">[[#{solicitud.id.tecnico}]]</label>
                                         <input type="text" class="form-control" 
-                                               th:value="ldiego"                                              
+                                               th:value="${#authentication.getName()}"
                                                th:name="tecnico" 
                                                disabled='true'
                                                />

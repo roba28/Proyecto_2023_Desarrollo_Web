@@ -66,7 +66,7 @@ DEFAULT CHARACTER SET = utf8mb4;
 create table sistema_incidentes.usuario (
   id_usuario INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   usuario VARCHAR(20) NOT NULL,
-  contrasena VARCHAR(16) NOT NULL,
+  contrasena VARCHAR(512) NOT NULL,
   nombre_completo VARCHAR(80) NOT NULL,
   cedula INT NOT NULL,
   email VARCHAR(30) NOT NULL,
@@ -166,6 +166,17 @@ USE `sistema_incidentes`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `sistema_incidentes`.`actualiza_tecnico` BEFORE UPDATE ON `ticket` FOR EACH ROW
 BEGIN
 	IF (NEW.id_tecnico != OLD.id_tecnico) then SET NEW.fecha_registra_tecnico = NOW();
+    END IF;
+END$$
+DELIMITER ;
+
+DROP TRIGGER IF EXISTS `sistema_incidentes`.`activa_usuario`;
+
+DELIMITER $$
+USE `sistema_incidentes`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `sistema_incidentes`.`activa_usuario` BEFORE UPDATE ON `usuario` FOR EACH ROW
+BEGIN
+	IF (OLD.estado_usuario = 2) then SET NEW.estado_usuario = 1;
     END IF;
 END$$
 DELIMITER ;

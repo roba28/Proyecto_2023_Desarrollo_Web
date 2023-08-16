@@ -18,4 +18,16 @@ public interface UsuarioService {
     
     // Se elimina el usuario que tiene el id pasado por parámetro
     public void delete(Usuario usuario);
+    
+    // Se obtiene un Usuario, a partir del username de un usuario
+    public Usuario getUsuarioPorUsername(String username);
+
+    // Se obtiene un Usuario, a partir del username y el password de un usuario
+    public Usuario getUsuarioPorUsernameYContrasena(String username, String password);
+    
+    // Se obtiene un Usuario, a partir del username y el password de un usuario
+    public Usuario getUsuarioPorUsernameOEmail(String username, String email);
+    
+    // Se valida si existe un Usuario considerando el username
+    public boolean existeUsuarioPorUsernameOEmail(String username, String email);
 }

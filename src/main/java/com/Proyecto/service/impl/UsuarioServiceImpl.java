@@ -40,4 +40,28 @@ public class UsuarioServiceImpl implements UsuarioService{
     public void delete(Usuario usuario) {
         usuarioDao.delete(usuario);
     }
+    
+    @Override
+    @Transactional(readOnly = true)
+    public Usuario getUsuarioPorUsername(String username) {
+        return usuarioDao.findByUsername(username);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Usuario getUsuarioPorUsernameYContrasena(String username, String contrasena) {
+        return usuarioDao.findByUsernameAndContrasena(username, contrasena);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Usuario getUsuarioPorUsernameOEmail(String username, String email) {
+        return usuarioDao.findByUsernameOrEmail(username, email);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public boolean existeUsuarioPorUsernameOEmail(String username, String email) {
+        return usuarioDao.existsByUsernameOrEmail(username, email);
+    }
 }

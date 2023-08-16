@@ -47,6 +47,7 @@ public class TicketController {
 //        var tickets = ticketService.getTickets();
         model.addAttribute("tickets", tickets);
         return "UsuarioTickets/historicoTickets";
+//        return "UsuarioTickets/ticketsRegistradosUsuario";
     }
     
     
@@ -67,7 +68,7 @@ public class TicketController {
     @PostMapping("/guardar")
     public String ticketGuardar(Ticket ticket) {
         ticketService.save(ticket);
-        return "redirect:/ticket/listado/asignados";
+        return "redirect:/";
     }
     
     @GetMapping("/atencion/{idTicket}")

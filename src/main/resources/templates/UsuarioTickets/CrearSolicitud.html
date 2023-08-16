@@ -14,7 +14,7 @@
                             <section th:replace="~{UsuarioTickets/fragmentos :: agregarSolicitud}"/>         
                         </div>-->
         <div class="container">
-            <h1>Creación de nueva Solicitud</h1>
+            <h1>[[#{solicitud.titulo}]]</h1>
             <div class="panel panel-default">
                 <div class="panel-body">
                     <form th:action="@{/ticket/guardar}" th:object="${ticket}"
@@ -30,7 +30,7 @@
                         <input type="hidden" name="comentarioTecnico" value=""/>
                         <div class="col">
                             <div class="form-outline">
-                                <label for="idUsuario">Usuario</label>
+                                <label for="idUsuario">[[#{plantilla.tusuario}]]</label>
                                 <input type="text" class="form-control" name="idUsuario" disabled="true" value=4 />
                             </div>
                         </div>
@@ -38,12 +38,12 @@
 
                         <!-- Text input -->
                         <div class="form-outline mb-4">
-                            <label for="titulo">Titulo</label>
+                            <label for="titulo">[[#{solicitud.titulo.nombre}]]</label>
                             <input type="text" name="titulo" class="form-control" />
 
                         </div>
                         <div class="mb-3">
-                            <label for="incidencia">Tipo del incidente</label>
+                            <label for="incidencia">[[#{solicitud.tipo.incidente}]]</label>
                             <select th:field="*{incidencia.incidencia}"
                                     class="form-select" 
                                     aria-label="Default select example">
@@ -52,7 +52,7 @@
                             </select>
                         </div>
                         <div class="form-outline mb-4">
-                            <label for="descripcion">Descripción</label>
+                            <label for="descripcion">[[#{solicitud.descripcion}]]</label>
                             <textarea class="form-control" name="descripcion" rows="4"></textarea>
 
                         </div>
@@ -65,13 +65,13 @@
                                                 </div>-->
 
                         <div class="form-outline mb-4">
-                            <label for="comentariosUsuario2">Comentarios usuario</label>
+                            <label for="comentariosUsuario2">[[#{solicitud.comentarios.usuario}]]</label>
                             <textarea class="form-control" name="comentariosUsuario" rows="4" ></textarea>
 
                         </div>
                         <div class="form-outline mb-4">
                             <!-- Submit button -->
-                            <button type="submit" class="btn btn-primary btn-block mb-2">Guardar</button>
+                            <button type="submit" class="btn btn-primary btn-block mb-2">[[#{accion.guardar}]]</button>
                         </div>
                     </form>
                 </div>

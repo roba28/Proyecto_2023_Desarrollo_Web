@@ -49,7 +49,7 @@ public class Usuario implements Serializable {
     @ManyToOne
     @JoinColumn(name = "estadoUsuario")
     private EstadoUsuario estadoUsuario;
-
+    
 //    public Usuario() {
 //    }
 
