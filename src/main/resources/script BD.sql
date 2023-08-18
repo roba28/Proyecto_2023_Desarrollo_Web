@@ -156,16 +156,20 @@ USE `sistema_incidentes`$$
 CREATE TRIGGER `sistema_incidentes`.`inserta_usuario` BEFORE INSERT ON `usuario` FOR EACH ROW
 BEGIN
 	SET NEW.rol = 1;
-    SET NEW.estado_usuario = 1;
+    SET NEW.estado_usuario = 2;
     SET NEW.fecha_registro = NOW();
 END$$
 DELIMITER ;
+
+DROP TRIGGER IF EXISTS `sistema_incidentes`.`actualiza_tecnico`;
 
 DELIMITER $$
 USE `sistema_incidentes`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `sistema_incidentes`.`actualiza_tecnico` BEFORE UPDATE ON `ticket` FOR EACH ROW
 BEGIN
 	IF (NEW.id_tecnico != OLD.id_tecnico) then SET NEW.fecha_registra_tecnico = NOW();
+    END IF;
+    IF (NEW.id_tecnico != OLD.id_tecnico) then SET NEW.estado = 2;
     END IF;
 END$$
 DELIMITER ;

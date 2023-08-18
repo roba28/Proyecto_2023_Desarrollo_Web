@@ -117,17 +117,21 @@ public class ProjectConfig implements WebMvcConfigurer {
                 .permitAll()
                 .requestMatchers(
                         "/usuario/**", "/provincia/listado", "/canton/listado",
-                        "/distrito/listado"
+                        "/distrito/listado", "reportes/historicoTickets**",
+                        "/ticket/listado/solicitudesRegistradas/**"
                 ).hasRole("ADMINISTRATIVO")
                 .requestMatchers(
                         "/ticket/listado",
-                        "ticket/listado/**",
+                        "ticket/listado/asignados",
+                        "ticket/listado/historicoAtencion",
                         "ticket/atencion/**"
                 ).hasAnyRole("TECNICO", "ADMINISTRATIVO")
                 //                        .hasRole("TECNICO")
                 //                ).hasAnyRole("ADMIN", "VENDEDOR")
                 .requestMatchers("/index", "/nosotros/acercaDeNosotros", "/ticket/nuevo",
-                        "/ticket/guardar"
+                        "/ticket/guardar", "ticket/ver/**", "ticket/editar/**",
+                        "ticket/query**", "/ticket/listado/historicoUsuario",
+                        "ticket/listado/ticketsEnProceso"
                 ).hasAnyRole("USUARIO", "TECNICO", "ADMINISTRATIVO")
                 //                .hasRole("USUARIO")
                 )

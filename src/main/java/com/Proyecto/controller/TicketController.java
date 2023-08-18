@@ -57,6 +57,7 @@ public class TicketController {
         List<EstadoTicket> estadoTickets = estadoTicketService.getEstadoTickets();
         List<Prioridad> prioridades = prioridadService.getPrioridades();
         List<Usuario> usuarios = usuarioService.getUsuarios();
+        model.addAttribute("usuarios", usuarios);
         model.addAttribute("incidencias", incidencias);
         model.addAttribute("estadoTickets", estadoTickets);
         model.addAttribute("prioridades", prioridades);
@@ -119,6 +120,38 @@ public class TicketController {
         model.addAttribute("tickets", tickets);
         return "UsuarioTickets/ticketsAsignados";
     }
+    
+    @GetMapping("/listado/historicoUsuario")
+    public String historicoUsuario(Model model) {
+//        List<Ticket> tickets = ticketService.getTickets();
+        var tickets = ticketService.getTickets();
+        model.addAttribute("tickets", tickets);
+        return "UsuarioTickets/historicoUsuario";
+    }
+    
+    @GetMapping("/listado/ticketsEnProceso")
+    public String ticketsAbiertos(Model model) {
+//        List<Ticket> tickets = ticketService.getTickets();
+        var tickets = ticketService.getTickets();
+        model.addAttribute("tickets", tickets);
+        return "UsuarioTickets/solicitudEnProceso";
+    }
+    
+    @GetMapping("/listado/historicoAtencion")
+    public String historicoAtencion(Model model) {
+//        List<Ticket> tickets = ticketService.getTickets();
+        var tickets = ticketService.getTickets();
+        model.addAttribute("tickets", tickets);
+        return "UsuarioTickets/historicoTecnico";
+    }
+    
+    @GetMapping("/listado/solicitudesRegistradas")
+    public String solicitudesRegistradas(Model model) {
+//        List<Ticket> tickets = ticketService.getTickets();
+        var tickets = ticketService.getTickets();
+        model.addAttribute("tickets", tickets);
+        return "UsuarioTickets/asignacionTecnico";
+    }
 
     @PostMapping("/query4")
     public String consultaQuery4(@RequestParam(value = "tecnico") String tecnico, Model model) {
@@ -126,6 +159,54 @@ public class TicketController {
         model.addAttribute("tickets", tickets);
         model.addAttribute("tecnico", tecnico);
         return "UsuarioTickets/ticketsAsignados";
+    }
+    
+    
+    @GetMapping("/editar/{idTicket}")
+    public String ticketModificarTicket(Ticket ticket, Model model) {
+        ticket = ticketService.getTicket(ticket);
+        List<Usuario> usuarios = usuarioService.getUsuarios();
+        List<EstadoTicket> estadoTickets = estadoTicketService.getEstadoTickets();
+        List<Incidencia> incidencias = incidenciaService.getIncidencias();
+        List<Prioridad> prioridades = prioridadService.getPrioridades();
+        model.addAttribute("ticket", ticket);
+        model.addAttribute("usuarios", usuarios);
+        model.addAttribute("estadoTickets", estadoTickets);
+        model.addAttribute("incidencias", incidencias);
+        model.addAttribute("prioridades", prioridades);
+        model.addAttribute("tecnicos", usuarios);
+        return "UsuarioTickets/modifica"; //modificar este return
+    }
+    
+    @GetMapping("/ver/{idTicket}")
+    public String verTicket(Ticket ticket, Model model) {
+        ticket = ticketService.getTicket(ticket);
+        List<Usuario> usuarios = usuarioService.getUsuarios();
+        List<EstadoTicket> estadoTickets = estadoTicketService.getEstadoTickets();
+        List<Incidencia> incidencias = incidenciaService.getIncidencias();
+        List<Prioridad> prioridades = prioridadService.getPrioridades();
+        model.addAttribute("ticket", ticket);
+        model.addAttribute("usuarios", usuarios);
+        model.addAttribute("estadoTickets", estadoTickets);
+        model.addAttribute("incidencias", incidencias);
+        model.addAttribute("prioridades", prioridades);
+        model.addAttribute("tecnicos", usuarios);
+        return "UsuarioTickets/verTicket"; //modificar este return
+    }
+    @GetMapping("/listado/solicitudesRegistradas/asignar/{idTicket}")
+    public String asignarTecnico(Ticket ticket, Model model) {
+        ticket = ticketService.getTicket(ticket);
+        List<Usuario> usuarios = usuarioService.getUsuarios();
+        List<EstadoTicket> estadoTickets = estadoTicketService.getEstadoTickets();
+        List<Incidencia> incidencias = incidenciaService.getIncidencias();
+        List<Prioridad> prioridades = prioridadService.getPrioridades();
+        model.addAttribute("ticket", ticket);
+        model.addAttribute("usuarios", usuarios);
+        model.addAttribute("estadoTickets", estadoTickets);
+        model.addAttribute("incidencias", incidencias);
+        model.addAttribute("prioridades", prioridades);
+        model.addAttribute("tecnicos", usuarios);
+        return "UsuarioTickets/asignaTecnicoPrioridad"; //modificar este return
     }
     
 //    @GetMapping("/listado/asignados/atencion")

@@ -21,18 +21,22 @@
                           method="POST" class="was-validated"
                           enctype="multipart/form-data">
                         <!-- 2 column grid layout with text inputs for the first and last names -->
-                        <input type="hidden" name="usuario.idUsuario" value="5"/>
+                        <!--<input type="hidden" name="usuario.idUsuario" value="5"/>-->
                         <input type="hidden" name="fechaRegistraTecnico"/>
                         <input type="hidden" name="fechaRegistroUsuario"/>
                         <input type="hidden" name="estado"/>
                         <input type="hidden" name="prioridad"/>
                         <input type="hidden" name="idTecnico"/>
                         <input type="hidden" name="comentarioTecnico" value=""/>
-                        <div class="col">
-                            <div class="form-outline">
-                                <label for="idUsuario">[[#{plantilla.tusuario}]]</label>
-                                <input type="text" class="form-control" name="idUsuario" disabled="true" value=4 />
-                            </div>
+                        <div class="mb-3">
+                            <label for="usuario">[[#{plantilla.tusuario}]]</label>
+                            <select th:field="*{usuario.idUsuario}"
+                                    class="form-select" 
+                                    aria-label="Default select example" readOnly>
+                                <option th:each="c : ${usuarios}" th:value="${c.idUsuario}" th:text="${c.username}" th:if="${c.username} == ${#authentication.getName()}"
+                                       readOnly >
+                                </option>
+                            </select>
                         </div>
 
 

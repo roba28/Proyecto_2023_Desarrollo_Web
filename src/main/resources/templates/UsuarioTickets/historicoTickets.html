@@ -12,7 +12,27 @@
         <div class="container">
             <h1>[[#{solicitud.titulo.historico}]]</h1>
             <section th:replace="~{UsuarioTickets/fragmentos :: filtrosHistorico}"/>            
-            <section th:replace="~{UsuarioTickets/fragmentos :: listado}"/>
+            <section th:replace="~{UsuarioTickets/fragmentos :: listadoHistorico}"/>
+            <section id="exportar">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h4>[[#{reporte.exportar}]]</h4>
+                    <div class="card-body">
+                        <a th:href="@{/reportes/historicoTickets?tipo=vPdf}" class="btn btn-primary">
+                            <i class='fas fa-eye'></i><i class='fas fa-file-pdf'></i>[[#{reporte.pdf}]]
+                        </a>
+                        <a th:href="@{/reportes/historicoTickets?tipo=Pdf}" class="btn btn-success">
+                            <i class='fas fa-download'></i><i class='fas fa-file-pdf'></i>[[#{reporte.pdf}]]
+                        </a>
+                        <a th:href="@{/reportes/historicoTickets?tipo=Xls}" class="btn btn-warning">
+                            <i class='fas fa-download'></i><i class='fas fa-file-excel'></i>[[#{reporte.xls}]]
+                        </a>
+                        <a th:href="@{/reportes/historicoTicketstipo=Csv}" class="btn btn-danger">
+                            <i class='fas fa-download'></i><i class='fas fa-file-csv'></i>[[#{reporte.csv}]]
+                        </a>
+                    </div>
+                </div> 
+            </section>
         </div>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -17,12 +17,17 @@
                                 <a class="navbar-brand" href="#">[[#{aplicacion.titulo}]]</a>
                             </div>
                             <ul class="nav navbar-nav">
-                                <li class="active"><a href="/login">[[#{plantilla.inicio}]]</a></li>
-                                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">[[#{plantilla.solicitudes}]] <span class="caret"></span></a>
+                                <li class="active"><a href="/">[[#{plantilla.inicio}]]</a></li>
+                                <li class="dropdown" sec:authorize="isAuthenticated()" ><a class="dropdown-toggle" data-toggle="dropdown" href="#">[[#{plantilla.solicitudes}]] <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li><a th:href="@{/ticket/nuevo}">[[#{solicitud.nueva}]]</a></li>         
-                                        <li><a th:href="@{/ticket/listado}">[[#{solicitud.historico}]]</a></li>
-                                        <li><a th:href="@{/ticket/listado/asignados}">[[#{solicitud.asignados}]]</a></li>
+                                        <li><a th:href="@{/ticket/nuevo}">[[#{solicitud.nueva}]]</a></li>
+                                        <li><a th:href="@{/ticket/listado/historicoUsuario}">[[#{solicitud.historico.usuario}]]</a></li>
+                                        <li><a th:href="@{/ticket/listado/ticketsEnProceso}">[[#{solicitud.en.proceso}]]</a></li>
+                                        <li><a th:href="@{/ticket/listado/historicoAtencion}" sec:authorize="hasRole('ROLE_ADMINISTRATIVO') or hasRole('ROLE_TECNICO')">[[#{solicitud.historico.atencion}]]</a></li>
+                                        <li><a th:href="@{/ticket/listado/asignados}" sec:authorize="hasRole('ROLE_ADMINISTRATIVO') or hasRole('ROLE_TECNICO')">[[#{atencion.ticket}]]</a></li>
+                                        <li><a th:href="@{/ticket/listado/solicitudesRegistradas}" sec:authorize="hasRole('ROLE_ADMINISTRATIVO')">[[#{solicitud.asignar.tecnico.prioridad}]]</a></li>
+                                        <li><a th:href="@{/ticket/listado}" sec:authorize="hasRole('ROLE_ADMINISTRATIVO')">[[#{solicitud.historico}]]</a></li>
+                                        
                                     </ul>
                                 </li>
                                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" sec:authorize="hasRole('ROLE_ADMINISTRATIVO')">[[#{plantilla.usuarios}]]<span class="caret"></span></a>
@@ -53,15 +58,15 @@
                                             <form method="POST" th:action="@{/login}">
                                                 <button><i class="glyphicon glyphicon-log-in"></i></button>
                                             </form></span></a></li>
-                                <li><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user" span sec:authorize="isAuthenticated()" sec:authentication="name">Username</span>&nbsp;</a>
+                                <li><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user" sec:authorize="isAuthenticated()" sec:authentication="name">Username</span>&nbsp;</a>
                                     <ul class="dropdown-menu">
-                                    <li><a th:href="@{/usuario/listadoPersonal} ">[[#{usuario.actualizar}]]</a></li>
-                            </ul></li>
-                            <li><a><span span sec:authorize="isAuthenticated()" sec:authentication="principal.authorities">Username</span>&nbsp;</a></li>
-                            <li><a><span span sec:authorize="isAuthenticated()" >
-                                        <form method="POST" th:action="@{/logout}">
-                                            <button><i class="glyphicon glyphicon-log-out"></i></button>
-                                        </form></span></a></li>
+                                        <li><a th:href="@{/usuario/listadoPersonal} ">[[#{usuario.actualizar}]]</a></li>
+                                    </ul></li>
+                                <li><a><span span sec:authorize="isAuthenticated()" sec:authentication="principal.authorities">Username</span>&nbsp;</a></li>
+                                <li><a><span span sec:authorize="isAuthenticated()" >
+                                            <form method="POST" th:action="@{/logout}">
+                                                <button><i class="glyphicon glyphicon-log-out"></i></button>
+                                            </form></span></a></li>
                             </ul>
                         </div>
                     </nav>
