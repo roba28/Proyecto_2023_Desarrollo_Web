@@ -36,12 +36,25 @@
                                         <!--<a th:href="@{/usuario/Registrarse}" type="submit" class="btn btn-secondary">[[#{login.registro}]]</a>-->
                                         <a th:href="@{/registro/Registrarse}" type="submit" class="btn btn-secondary">[[#{login.registro}]]</a>
                                         <a th:href="@{/registro/recordar}" type="submit" class="btn btn-secondary">[[#{accion.recordar}]]</a>
+
+
+
                                     </form>
                                 </div>
+
                             </div>
                             <div th:if="${param.error != null}">
                                 <h3>[[#{error.login}]]</h3>
                             </div>
+                            <!--div>
+                                <label></label>
+                                <a href="#" role="button" aria-expanded="false">Lenguaje<span class="caret"></span></a>
+                                <a th:href="@{/(lang=es)}">ES</a>
+                                <a th:href="@{/(lang=en)}">EN</a>
+                            </div-->
                         </div>
-                    </body>
-                    </html>
+                        <br>
+                            <br>
+
+                                </body>
+                                </html>

@@ -27,7 +27,7 @@
                                         <li><a th:href="@{/ticket/listado/asignados}" sec:authorize="hasRole('ROLE_ADMINISTRATIVO') or hasRole('ROLE_TECNICO')">[[#{atencion.ticket}]]</a></li>
                                         <li><a th:href="@{/ticket/listado/solicitudesRegistradas}" sec:authorize="hasRole('ROLE_ADMINISTRATIVO')">[[#{solicitud.asignar.tecnico.prioridad}]]</a></li>
                                         <li><a th:href="@{/ticket/listado}" sec:authorize="hasRole('ROLE_ADMINISTRATIVO')">[[#{solicitud.historico}]]</a></li>
-                                        
+
                                     </ul>
                                 </li>
                                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" sec:authorize="hasRole('ROLE_ADMINISTRATIVO')">[[#{plantilla.usuarios}]]<span class="caret"></span></a>

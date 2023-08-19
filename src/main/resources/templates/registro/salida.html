@@ -7,18 +7,17 @@
     </head>
     <body>
         <header th:replace="~{layout/main :: header}"/>
-        <div class="row py-2 justify-content-center">
-            <div class="col-md-3">
-                <div class="card">
-                    <div class="card-header align-items-center">
-                        [[${titulo}]]
-                    </div>
-                    <div class="card-body">
-                        <strong>[[${mensaje}]]</strong>
-                    </div>
+
+        <div class="container">
+            <h1>[[${titulo}]]</h1>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <strong>[[${mensaje}]]</strong><!--<form th:action="@{/usuario/guardar}" th:object="${usuario}"-->
+
                 </div>
             </div>
         </div>
-        <footer th:replace="~{layout/main :: footer}"/>
+
+
     </body>
 </html>
