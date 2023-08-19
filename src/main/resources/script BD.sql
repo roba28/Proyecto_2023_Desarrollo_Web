@@ -27,7 +27,7 @@ create table sistema_incidentes.distrito (
   provincia INT NOT NULL,
   canton INT NOT NULL,
   distrito INT NOT NULL PRIMARY KEY,
-  nombre_distrito VARCHAR(20) NOT NULL,
+  nombre_distrito VARCHAR(28) NOT NULL,
   FOREIGN KEY fk_provincia_canton(provincia) REFERENCES provincia(provincia),
   FOREIGN KEY fk_canton_distrito(canton) REFERENCES canton(canton))
 ENGINE = InnoDB
